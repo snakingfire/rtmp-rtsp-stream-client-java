@@ -40,6 +40,7 @@ public abstract class OpenGlViewBase extends SurfaceView
   protected final Object sync = new Object();
   protected int previewWidth, previewHeight;
   protected int encoderWidth, encoderHeight;
+  protected int photoWidth, photoHeight;
   protected TakePhotoCallback takePhotoCallback;
   protected int streamRotation;
   protected boolean muteVideo = false;
@@ -109,6 +110,13 @@ public abstract class OpenGlViewBase extends SurfaceView
   @Override
   public void takePhoto(TakePhotoCallback takePhotoCallback) {
     this.takePhotoCallback = takePhotoCallback;
+  }
+
+  @Override
+  public void takePhoto(TakePhotoCallback takePhotoCallback, int width, int height) {
+    this.takePhotoCallback = takePhotoCallback;
+    this.photoWidth = width;
+    this.photoHeight = height;
   }
 
   @Override

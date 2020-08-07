@@ -130,9 +130,16 @@ public class OpenGlView extends OpenGlViewBase {
           managerRender.drawScreen(previewWidth, previewHeight, keepAspectRatio, aspectRatioMode, 0,
               true, false, false);
           if (takePhotoCallback != null) {
-            takePhotoCallback.onTakePhoto(
-                GlUtil.getBitmap(keepAspectRatio, aspectRatioMode, previewWidth, previewHeight,
-                    encoderWidth, encoderHeight));
+            if (photoWidth > 0 && photoHeight > 0) {
+              takePhotoCallback.onTakePhoto(
+                  GlUtil.getBitmap(keepAspectRatio, aspectRatioMode, photoWidth, photoHeight,
+                      encoderWidth, encoderHeight));
+              photoWidth = photoHeight = 0;
+            } else {
+              takePhotoCallback.onTakePhoto(
+                  GlUtil.getBitmap(keepAspectRatio, aspectRatioMode, previewWidth, previewHeight,
+                      encoderWidth, encoderHeight));
+            }
             takePhotoCallback = null;
           }
           surfaceManager.swapBuffer();

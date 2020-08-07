@@ -50,6 +50,13 @@ public interface GlInterface {
   void takePhoto(TakePhotoCallback takePhotoCallback);
 
   /**
+   * Capture an Image from Opengl using custom dimensions
+   *
+   * @param takePhotoCallback callback where you will get your image like a bitmap.
+   */
+  void takePhoto(TakePhotoCallback takePhotoCallback, int width, int height);
+
+  /**
    * Set a filter to stream.
    * You can select any filter from {@link com.pedro.encoder.input.gl.render.filters} or create
    * your own filter if you extends from {@link com.pedro.encoder.input.gl.render.filters.BaseFilterRender}
@@ -63,7 +70,7 @@ public interface GlInterface {
    * @param baseFilterRender filter to set. You can modify parameters to filter after set it to stream.
    */
   void setFilter(BaseFilterRender baseFilterRender);
-  
+
   /**
    * Enable or disable Anti aliasing (This method use FXAA).
    *
