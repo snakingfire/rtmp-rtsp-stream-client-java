@@ -124,6 +124,11 @@ public class OffScreenGlThread
   }
 
   @Override
+  public void takePhoto(TakePhotoCallback takePhotoCallback, int width, int height) {
+    this.takePhotoCallback = takePhotoCallback;
+  }
+
+  @Override
   public void setFilter(int filterPosition, BaseFilterRender baseFilterRender) {
     filterQueue.add(new Filter(filterPosition, baseFilterRender));
   }
